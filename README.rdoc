@@ -1,8 +1,8 @@
-= rpcfn-2-average_arrival_time
+= rpcfn-3-shortest_path
 
-My submission for Ruby Challenge #2: Average Flight Arrival Time
+My submission for Ruby Challenge #3: Short Circuit
 
-http://rubylearning.com/blog/2009/10/08/rpcfn-average-arrival-time-for-a-flight-2/
+http://rubylearning.com/blog/2009/10/30/rpcfn-short-circuit-3/
 
 == Features
 
@@ -11,9 +11,18 @@ http://rubylearning.com/blog/2009/10/08/rpcfn-average-arrival-time-for-a-flight-
 
 == Explanation
 
-I code test first which is why there are so many RSpec tests, I started handling the most basic test cases and then grew the algorithm until it could handle all the test cases discussed in the challenge and the comments.
+I decided to play with a couple different concepts in this submission:
 
-I implemented under the assumption that the arrival times passed to the method are not sorted in any way (such as ['10:00am', '2:00pm', '10:30am']) so that my algorithm has to infer if it’s a night flight or a day flight based on the proximity of the times. If it’s a night flight then it coerces the AM times to the next day. 
+* Rather than using a known shortest path algorithm such as Dijkstra's[http://en.wikipedia.org/wiki/Dijkstra's_algorithm], I wanted to write my own from scratch with the goal of it being simple (even if it meant being computationally expensive).
+* I wanted to make the algorithm recursive because I so rarely use recursion when building websites (my day job).
+* I wanted to use Ruby's infinity[http://weblog.jamisbuck.org/2007/2/7/infinity] to represent the distance of an empty/dead-end path. It had a nice side effect of allowing me to remove all nil checks from the code.
+
+== Usage
+
+require 'shortest_path'
+include ShortestPath
+shortest_path('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => [['A', 'B', 40]
+unused_paths('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => [['A', 'B', 50]
 
 == Copyright
 
