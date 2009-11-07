@@ -19,11 +19,7 @@ I decided to play with a couple different concepts in this submission:
 
 == Usage
 
-require 'shortest_path'
-include ShortestPath
-shortest_path('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => [['A', 'B', 40]
-unused_paths('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => [['A', 'B', 50]
-
-== Copyright
-
-Copyright (c) 2009 Todd Huss. See LICENSE for details.
+   require 'shortest_path'
+   include ShortestPath
+   shortest_path('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => [['A', 'B', 40]]
+   unused_paths('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => [['A', 'B', 50]]

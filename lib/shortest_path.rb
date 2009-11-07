@@ -12,14 +12,16 @@ module ShortestPath
   end
 
   # Returns the unused edges between start_node and end_node
-  def unused_paths(start_node, end_node, all_edges)
-    all_edges - shortest_path(start_node, end_node, all_edges)
+  # unused_paths('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => ['A', 'B', 50]  
+  def unused_paths(start_node, end_node, graph)
+    graph - shortest_path(start_node, end_node, graph)
   end
 
   # Returns the shortest path between start_node and end_node
-  def shortest_path(start_node, end_node, all_edges)
-    adjacent_edges = all_edges.select{ | edge | edge[NODES].include?(start_node) }
-    remaining_edges = all_edges - adjacent_edges
+  # shortest_path('A', 'B', [['A', 'B', 40], ['A', 'B', 50]]) => ['A', 'B', 40]
+  def shortest_path(start_node, end_node, graph)
+    adjacent_edges = graph.select{ | edge | edge[NODES].include?(start_node) }
+    remaining_edges = graph - adjacent_edges
     shortest_path = Path.new
     adjacent_edges.each do | edge |
       path = Path.new [edge]
